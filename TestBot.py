@@ -1,16 +1,11 @@
 import discord
 import asyncio
-import os.path
+import os
 from discord.ext import commands
 from discord.ext.commands import bot
 
 description = "Test bot"
 bot = commands.Bot(command_prefix='!!', description=description)
-
-if os.path.isfile("token.txt"):
-    file = open("token.txt","r")
-    token = file.readline()
-    file.close()
 
 todoList = []
 
@@ -36,5 +31,5 @@ async def showembed(ctx):
     embed.set_footer(text="푸터")
     await ctx.send(embed=embed)
 
-
+token = os.environ["BOT_TOKEN"]
 bot.run(token)
