@@ -1,10 +1,18 @@
 import discord
 import asyncio
+import os.path
 from discord.ext import commands
 from discord.ext.commands import bot
 
 description = "Test bot"
 bot = commands.Bot(command_prefix='!!', description=description)
+
+if os.path.isfile("token.txt"):
+    file = open("token.txt","r")
+    token = file.readline()
+    file.close()
+
+todoList = []
 
 @bot.event
 async def on_ready():
@@ -14,11 +22,19 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=discord.Game("Testing"))
 
 @bot.command()
-async def add(ctx, left:int, right:int):
-    await ctx.send(left + right)
+async def add(ctx, todo:str):
+    todoList.append(todo)
 
 @bot.command()
-async def ping(ctx):
-    await ctx.send("pong")
+async def show(ctx):
+    for todo in todoList:
+        await ctx.send(todo)
 
-bot.run('Njc5MjcyNTA4NTUzNDI5MDMy.Xku73w.e8l7mNhIxcG2Yy4aiscAxBrBUCI')
+@bot.command()
+async def showembed(ctx):
+    embed = discord.Embed(title="제목", description="설명", color=0x00ff00)
+    embed.set_footer(text="푸터")
+    await ctx.send(embed=embed)
+
+
+bot.run(token)
