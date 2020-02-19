@@ -31,5 +31,16 @@ async def DeleteTodo(ctx, todoName):
     embed = discord.Embed(title=todoName, color=0xff0000)
     await ctx.send(embed=embed)
 
+@bot.command()
+async def ShowCommands(ctx):
+    commands = """
+```
+AddTodo todo-name limitdate : Add todo in database.
+DeleteTodo todo-name : Delete todo in the database. 
+ShowAllTodo : Show all todo in the database. 
+```
+    """
+    await ctx.send(commands)
+
 token = os.environ["BOT_TOKEN"]
 bot.run(token)
