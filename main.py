@@ -5,16 +5,13 @@ import dbmanager
 from discord.ext import commands
 from discord.ext.commands import bot
 
-description = "Test bot"
-bot = commands.Bot(command_prefix='#', description=description)
+description = "Komorio Manager bot"
+bot = commands.Bot(command_prefix='>', description=description)
 
 todoList = []
 
 @bot.event
 async def on_ready():
-    print(bot.user.id)
-    print("Bot status: online")
-    print("Bot command prefix : " + bot.command_prefix) 
     await bot.change_presence(status=discord.Status.online, activity=discord.Game("Heroku Test"))
 
 @bot.command()
