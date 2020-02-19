@@ -28,6 +28,7 @@ async def ShowAllTodo(ctx):
 
 @bot.command()
 async def DeleteTodo(ctx, todoName):
+    dbmanager.DeleteTodo(todoName)
     embed = discord.Embed(title=todoName, color=0xff0000)
     await ctx.send(embed=embed)
 
