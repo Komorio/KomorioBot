@@ -41,7 +41,7 @@ async def DeleteTodo(ctx, todoName):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def ShowCommands(ctx):
+async def Commands(ctx):
     commands = """
 ```
 AddTodo todo-name limitdate : Add todo in database.
