@@ -46,7 +46,8 @@ async def Commands(ctx):
 ```
 AddTodo todo-name limitdate : Add todo in database.
 DeleteTodo todo-name : Delete todo in the database. 
-ShowAllTodo : Show all todo in the database. 
+ShowAllTodo : Show all todo in the database to use embed. 
+ShowAllTodoText : Show all todo in the database to use text.
 ```
     """
     await ctx.send(commands)
