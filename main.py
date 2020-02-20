@@ -8,8 +8,6 @@ from discord.ext.commands import bot
 description = "Komorio Manager bot"
 bot = commands.Bot(command_prefix='>', description=description)
 
-todoList = []
-
 @bot.event
 async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=discord.Game("Heroku Test"))
