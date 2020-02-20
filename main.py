@@ -28,10 +28,10 @@ async def ShowAllTodo(ctx):
 
 @bot.command()
 async def ShowAllTodoText(ctx):
-    todos = "'''"
+    todos = "```" + "\n"
     for data in dbmanager.GetAllData():
-        todos += data + "\n"
-    todos += "'''"
+        todos += data[0] + "," + data[1] + "\n"
+    todos += "```"
     await ctx.send(todos)
 
 @bot.command()
