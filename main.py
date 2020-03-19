@@ -27,7 +27,16 @@ async def 명령어(ctx):
 
     embed = discord.Embed(title="명령어 목록", description=description ,color=discord.Color.blue())
     await ctx.send(embed=embed)
+
+@bot.command()
+async def 프로필(ctx):
+    description = ""
     
+    for info in botinfo.GetProfile():
+        description += info + "\n"
+
+    embed = discord.Embed(title="🤔 프로필", description=description, color=discord.Color.blue())
+    await ctx.send(embed=embed)    
 
 @bot.command()
 async def 테스트(ctx):
@@ -35,7 +44,5 @@ async def 테스트(ctx):
     embed.set_footer(text="하단 설명")
     await ctx.send(embed=embed)
 
-# token = os.environ["BOT_TOKEN"]
-token = "Njc5MjcyNTA4NTUzNDI5MDMy.XnOVqQ.Jy-hB5oz0kUE7NCI1_f_HgOlFlk"
-
+token = os.environ["BOT_TOKEN"]
 bot.run(token)
