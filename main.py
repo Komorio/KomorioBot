@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import os
+import BotInformation as botinfo
 from discord.ext import commands
 from discord.ext.commands import bot
 
@@ -12,8 +13,21 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=discord.Game("Heroku Test"))
 
 @bot.command()
+async def 설명(ctx):
+    embed = discord.Embed(title="🔗 봇 설명", description=botinfo.GetBotExplanation(), color=discord.Color.blue())
+    embed.set_footer(text="🛠 개발자 : Komorio")
+    await ctx.send(embed=embed)
+
+@bot.command()
 async def 명령어(ctx):
-    pass
+    description = ""     
+    
+    for info in botinfo.GetCommands():
+        description += info + "\n"
+
+    embed = discord.Embed(title="명령어 목록", description=description ,color=discord.Color.blue())
+    await ctx.send(embed=embed)
+    
 
 @bot.command()
 async def 테스트(ctx):
