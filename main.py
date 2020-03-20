@@ -3,6 +3,7 @@ import asyncio
 import os
 import BotInformation as botinfo
 import SchoolMenu as schoolMenu
+import Todo as todo
 from discord.ext import commands
 from discord.ext.commands import bot
 
@@ -55,8 +56,38 @@ async def 급식(ctx):
     await ctx.send(embed=embed)    
 
 @bot.command()
+async def 오늘할일(ctx):
+    todayTodos = todo.GetTodayTodo()
+    index = 0
+
+    for todayTodo in todayTodos:
+        index += 1
+        embed = discord.Embed(title="📚 오늘 할 일 : " + todayTodo[0], description=todayTodo[1], color=discord.Color.dark_teal())
+        embed.set_footer(text=todayTodo[2])
+        await ctx.send(embed=embed)
+
+    if index == 0:
+        embed = discord.Embed(title="🤗 짜쟌 할 일이 없네요", description="그럴리 없는데...🤔", color=discord.Color.dark_teal())
+        await ctx.send(embed=embed)
+
+
+
+@bot.command()
+async def 오늘할일추가(ctx, todoTitle, description):
+    todo.AddTodayTodo(todoTitle, description)
+    embed = discord.Embed(title="📚 추가된 오늘 할 일 : " + todoTitle, description=description, color=discord.Color.dark_blue())
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def 내일할일추가(ctx, todoTitle, description):
+    todo.AddTodayTodo(todoTitle, description)
+    embed = discord.Embed(title="📚 추가된 내일 할 일 : " + todoTitle, description=description, color=discord.Color.blue())
+    await ctx.send(embed=embed)
+
+
+@bot.command()
 async def 테스트(ctx):
-    embed = discord.Embed(title="테스트", description="이것은 테스트 embed",color = discord.Color.blue())
+    embed = discord.Embed(title="오늘 할일", description="오늘 할일 : ",color = discord.Color.dark_teal())
     embed.set_footer(text="하단 설명")
     await ctx.send(embed=embed)
 

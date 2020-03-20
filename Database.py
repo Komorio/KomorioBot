@@ -51,7 +51,17 @@ def GetAllData(tableName:str):
     command = "SELECT * FROM {0}".format(tableName)
     cursor.execute(command)
     result = cursor.fetchall()
+    db.close()
+    
     return result
 
+def CustomExecute(command:str):
+    db = sql.connect(dbName)
+    cursor = db.cursor()
+
+    cursor.execute(command)
+    result = cursor.fetchall()
+    db.commit()
     db.close()
 
+    return result
