@@ -80,7 +80,7 @@ async def 오늘할일추가(ctx, todoTitle, description):
 
 @bot.command()
 async def 내일할일추가(ctx, todoTitle, description):
-    todo.AddTodayTodo(todoTitle, description)
+    todo.AddTomorrowTodo(todoTitle, description)
     embed = discord.Embed(title="📚 추가된 내일 할 일 : " + todoTitle, description=description, color=discord.Color.blue())
     await ctx.send(embed=embed)
 
