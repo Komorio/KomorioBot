@@ -2,6 +2,7 @@ import discord
 import asyncio
 import os
 import BotInformation as botinfo
+import SchoolMenu as schoolMenu
 from discord.ext import commands
 from discord.ext.commands import bot
 
@@ -36,6 +37,21 @@ async def 프로필(ctx):
         description += info + "\n"
 
     embed = discord.Embed(title="🤔 프로필", description=description, color=discord.Color.blue())
+    await ctx.send(embed=embed)    
+
+@bot.command()
+async def 급식(ctx):
+    description = ""
+    index = 0
+    for menu in schoolMenu.GetLunchMenu():
+        description += menu + "\n \n"
+        index += 1    
+
+    if index != 0:
+        embed = discord.Embed(title="🍚 오늘 급식", description=description, color=discord.Color.green())
+    else :
+        embed = discord.Embed(title="😔 밥이 없다", description="오늘은 밥이 없는 날.", color=discord.Color.teal())
+    
     await ctx.send(embed=embed)    
 
 @bot.command()
