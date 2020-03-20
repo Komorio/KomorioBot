@@ -87,8 +87,7 @@ async def 내일할일추가(ctx, todoTitle, description):
 
 @bot.command()
 async def 테스트(ctx):
-    embed = discord.Embed(title="오늘 할일", description="오늘 할일 : ",color = discord.Color.dark_teal())
-    embed.set_footer(text="하단 설명")
+    embed = discord.Embed(title="🛠 뚝딱뚝딱 (╯°□°）╯︵ ┻━┻", description="무언가를 만드는 중입니다. ┬─┬ ノ( ゜-゜ノ)",color = discord.Color.dark_teal())
     await ctx.send(embed=embed)
 
 token = os.environ["BOT_TOKEN"]
