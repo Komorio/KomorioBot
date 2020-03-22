@@ -19,7 +19,7 @@ def GetCommands():
 
 def GetProfile():
     profile = [""]
-    profile[0] = "🧩 주로 게임 개발을 하는 학생입니다! \n"
+    profile[0] = "🧩 Komorio : 주로 게임 개발을 하는 학생입니다! \n"
     profile.append("📷 Portfolio : https://site.komorio.ml \n") 
     profile.append("🛠 GitHub : https://www.github.com/Komorio \n")
     
