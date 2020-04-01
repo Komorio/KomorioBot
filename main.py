@@ -70,7 +70,7 @@ async def 오늘할일(ctx):
         embed = discord.Embed(title="🤗 짜쟌 할 일이 없네요", description="그럴리 없는데...🤔", color=discord.Color.dark_teal())
         await ctx.send(embed=embed)
 
-
+# TODO : 알림 추가 하면 그 시간에 알람 보내는 기능
 
 @bot.command()
 async def 오늘할일추가(ctx, todoTitle, description):
